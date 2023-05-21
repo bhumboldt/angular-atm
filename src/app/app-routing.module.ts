@@ -17,6 +17,20 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'admin',
+    children: [
+      {
+        path: '',
+        redirectTo: 'overview',
+        pathMatch: 'full'
+      },
+      {
+        path: 'overview',
+        loadChildren: () => import('../lib/pages/admin/overview/overview.module').then(m => m.OverviewModule)
+      }
+    ]
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'public'

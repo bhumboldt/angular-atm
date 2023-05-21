@@ -5,10 +5,7 @@ export const withdrawFunds = (withdrawAmount: number, availableFunds: Funds): Ob
   let amountLeftToWithdraw = withdrawAmount;
   const dispensed: number[] = [];
 
-  const sortedFundAmounts = Object.entries(availableFunds).map(([unit, unitAmount]) => ({
-    unit: Number(unit),
-    unitAmount
-  })).sort((a, b) => b.unit - a.unit);
+  const sortedFundAmounts = getFundsObjectMapping(availableFunds).sort((a, b) => b.unit - a.unit);
 
   for (let i = 0; i < sortedFundAmounts.length; i++) {
     const { unit, unitAmount } = sortedFundAmounts[i];
@@ -32,3 +29,8 @@ export const withdrawFunds = (withdrawAmount: number, availableFunds: Funds): Ob
 
   return of(dispensedFunds);
 }
+
+export const getFundsObjectMapping = (funds: Partial<Funds>): { unit: number, unitAmount: number }[] => Object.entries(funds).map(([unit, unitAmount]) => ({
+  unit: Number(unit),
+  unitAmount: Number(unitAmount)
+}))
