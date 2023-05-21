@@ -1,0 +1,12 @@
+<div class="flex flex-col">
+  <h3>Available Funds</h3>
+
+  <div id="funds-overview-container" class="flex" style="flex-wrap: wrap">
+    <div class="flex mb-16" *ngFor="let fund of funds">
+      <span>${{ fund.unit + ':'  }}</span> <span style="margin-left: 8px">{{ fund.unitAmount }} units left</span>
+    </div>
+  </div>
+
+</div>
+
+

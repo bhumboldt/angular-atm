@@ -1,6 +1,8 @@
-import { createReducer } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { Withdrawal } from '../models/withdrawal.model';
 import { Funds } from '../models/funds.model';
+import { withdrawSucceeded } from './funds.actions';
+import { getFundsObjectMapping } from '../util/funds.util';
 
 export const FEATURE_NAME = 'core-funds';
 
@@ -21,6 +23,20 @@ export const initialState: FundsState = {
   }
 }
 
+export const setWithdrawSucceededState = (state: FundsState, { amount, fundsDispensed }: { amount: number, fundsDispensed: Partial<Funds> }): FundsState => ({
+  ...state,
+  withdrawals: [
+    { amountWithdrawn: amount, date: new Date() },
+    ...state.withdrawals
+  ],
+  currentFunds: getFundsObjectMapping(fundsDispensed).reduce((prev, curr) => ({
+    ...prev,
+    [curr.unit]: prev[curr.unit] - curr.unitAmount
+  }), state.currentFunds)
+});
+
+
 export const fundsReducer = createReducer(
-  initialState
+  initialState,
+  on(withdrawSucceeded, setWithdrawSucceededState)
 );

@@ -1,0 +1,26 @@
+<button mat-flat-button class="mode-switch-button" color="accent" [routerLink]="['/', 'public']">Public ATM</button>
+
+<div class="flex justify-content-center align-items-center h-100">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        ATM Overview
+      </mat-card-title>
+      <mat-card-subtitle>
+        View the ATM transactions and current funds
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="flex flex-col">
+      <app-funds-overview
+        class="mt-16"
+        [funds]="availableFunds$ | push"
+      ></app-funds-overview>
+
+      <app-transaction-history
+        class="mt-16"
+        [transactions]="transactions$ | push"
+      ></app-transaction-history>
+    </mat-card-content>
+  </mat-card>
+</div>
