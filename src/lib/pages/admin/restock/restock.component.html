@@ -4,26 +4,23 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        ATM Overview
+        ATM Restock
       </mat-card-title>
       <mat-card-subtitle>
-        View the ATM transactions and current funds
+        Enter an amount for any units that you would like to add to the current stock
       </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content class="flex flex-col">
-      <app-funds-overview
+      <app-restock-form
         class="mt-16"
-        [funds]="availableFunds$ | push"
-      ></app-funds-overview>
-      <div class="flex justify-content-end">
-        <button mat-flat-button color="primary" [routerLink]="['..', 'restock']">Restock</button>
+        [form]="restockForm"
+      ></app-restock-form>
+      <div class="flex justify-content-between">
+        <button mat-flat-button color="accent" [routerLink]="['..', 'overview']">Done</button>
+        <button mat-flat-button color="primary" (click)="submit()">Submit</button>
       </div>
 
-      <app-transaction-history
-        class="mt-16"
-        [transactions]="transactions$ | push"
-      ></app-transaction-history>
     </mat-card-content>
   </mat-card>
 </div>

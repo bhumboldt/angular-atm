@@ -27,6 +27,10 @@ const routes: Routes = [
       {
         path: 'overview',
         loadChildren: () => import('../lib/pages/admin/overview/overview.module').then(m => m.OverviewModule)
+      },
+      {
+        path: 'restock',
+        loadChildren: () => import('../lib/pages/admin/restock/restock.module').then(m => m.RestockModule)
       }
     ]
   },

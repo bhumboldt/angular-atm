@@ -6,3 +6,5 @@ export const withdrawAmount = createAction(`[CORE: Funds] Withdraw amount`, prop
 export const withdrawSucceeded = createAction(`[CORE: Funds] Withdrawal succeeded`, props<{ fundsDispensed: Partial<Funds>, amount: number }>());
 
 export const withdrawFailed = createAction(`[CORE: Funds] Withdrawal failed`);
+
+export const addStock = createAction(`[CORE: Funds] Add stock`, props<{ stock: Partial<Funds> }>());

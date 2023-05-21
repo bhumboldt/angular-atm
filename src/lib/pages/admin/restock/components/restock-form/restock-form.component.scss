@@ -1,0 +1,11 @@
+#restock-form {
+  flex-wrap: wrap;
+}
+
+#restock-form > * {
+  flex: 50%;
+}
+
+:host {
+  display: block;
+}

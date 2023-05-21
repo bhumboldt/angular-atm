@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { withdrawAmount, withdrawFailed, withdrawSucceeded } from './funds.actions';
+import { addStock, withdrawAmount, withdrawFailed, withdrawSucceeded } from './funds.actions';
 import { map, of, catchError, tap, withLatestFrom, switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { withdrawFunds } from '../util/funds.util';
@@ -33,5 +33,10 @@ export class FundsEffects {
   withdrawalFailed$ = createEffect(() => this.actions$.pipe(
     ofType(withdrawFailed),
     tap(() => this.snackbar.open('Insufficient Funds', 'Dismiss'))
-  ), { dispatch: false})
+  ), { dispatch: false});
+
+  restockSuccess$ = createEffect(() => this.actions$.pipe(
+    ofType(addStock),
+    tap(() => this.snackbar.open('Stock added successfully', undefined, { duration: 3000 }))
+  ), { dispatch: false });
 }
