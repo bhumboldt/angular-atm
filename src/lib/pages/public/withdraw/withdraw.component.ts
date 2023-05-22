@@ -11,7 +11,7 @@ import { showAdminPasswordModal } from '../../../core/auth/store/auth.actions';
   styleUrls: ['./withdraw.component.scss']
 })
 export class WithdrawComponent {
-  withdrawAmountControl = new FormControl(null, [Validators.required, positiveIntegerValidator]);
+  withdrawAmountControl = new FormControl(null, [Validators.required, positiveIntegerValidator, Validators.max(2000)]);
 
   constructor(private readonly store: Store) {}
 
