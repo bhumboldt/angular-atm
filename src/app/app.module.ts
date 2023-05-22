@@ -8,6 +8,9 @@ import { StoreModule } from '@ngrx/store';
 import { CoreFundsModule } from '../lib/core/funds/core-funds.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { CoreAuthModule } from '../lib/core/auth/core-auth.module';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { AdminPasswordModule } from '../lib/modals/admin-password/admin-password.module';
 
 @NgModule({
   declarations: [
@@ -20,10 +23,14 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule,
     CoreFundsModule,
+    CoreAuthModule,
+    AdminPasswordModule,
 
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
 
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

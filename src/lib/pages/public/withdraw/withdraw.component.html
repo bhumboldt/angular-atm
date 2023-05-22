@@ -1,4 +1,4 @@
-<button mat-flat-button class="mode-switch-button" color="accent" [routerLink]="['/', 'admin']">Admin Interface</button>
+<button mat-flat-button class="mode-switch-button" color="accent" (click)="showAdminPasswordModal()">Admin Interface</button>
 
 <div class="flex align-items-center justify-content-center h-100">
   <mat-card>
@@ -12,8 +12,8 @@
     </mat-card-header>
 
     <mat-card-content>
-      <div class="flex align-items-center justify-content-center mt-16 mb-16 ">
-        <mat-form-field class="mr-16">
+      <div class="flex align-items-center mt-16 mb-16">
+        <mat-form-field class="w-100">
           <mat-label>Withdrawal Amount</mat-label>
           <input [formControl]="withdrawAmountControl" matInput type="number" />
           <mat-error
@@ -23,6 +23,8 @@
             *ngIf="withdrawAmountControl.touched && withdrawAmountControl.errors?.['invalidInteger']"
           >Withdrawal amount must be a whole number greater than 0</mat-error>
         </mat-form-field>
+      </div>
+      <div class="flex justify-content-end">
         <button mat-flat-button color="primary" [disabled]="withdrawAmountControl.invalid" (click)="withdraw()">Withdraw</button>
       </div>
     </mat-card-content>
