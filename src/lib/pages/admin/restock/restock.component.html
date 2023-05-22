@@ -1,7 +1,7 @@
 <button mat-flat-button class="mode-switch-button" color="accent" [routerLink]="['/', 'public']">Public ATM</button>
 
 <div class="flex justify-content-center align-items-center h-100">
-  <mat-card>
+  <mat-card class="admin-container">
     <mat-card-header>
       <mat-card-title>
         ATM Restock
@@ -17,7 +17,7 @@
         [form]="restockForm"
       ></app-restock-form>
       <div class="flex justify-content-between">
-        <button mat-flat-button color="accent" [routerLink]="['..', 'overview']">Done</button>
+        <button mat-flat-button [routerLink]="['..', 'overview']">Done</button>
         <button mat-flat-button color="primary" (click)="submit()">Submit</button>
       </div>
 

@@ -1,5 +1,9 @@
 #funds-overview-container > * {
-  flex: 50%;
+  flex: 33%;
+}
+
+#funds-overview-container {
+  flex-wrap: wrap;
 }
 
 :host {

@@ -1,7 +1,7 @@
 <button mat-flat-button class="mode-switch-button" color="accent" [routerLink]="['/', 'public']">Public ATM</button>
 
 <div class="flex justify-content-center align-items-center h-100">
-  <mat-card>
+  <mat-card class="admin-container">
     <mat-card-header>
       <mat-card-title>
         ATM Overview
@@ -16,10 +16,6 @@
         class="mt-16"
         [funds]="availableFunds$ | push"
       ></app-funds-overview>
-      <div class="flex justify-content-end">
-        <button mat-flat-button color="primary" [routerLink]="['..', 'restock']">Restock</button>
-      </div>
-
       <app-transaction-history
         class="mt-16"
         [transactions]="transactions$ | push"
