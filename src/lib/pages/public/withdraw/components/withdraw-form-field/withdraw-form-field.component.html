@@ -1,0 +1,13 @@
+<mat-form-field class="w-100">
+  <mat-label>Withdrawal Amount</mat-label>
+  <input [formControl]="control" matInput type="number" (keyup.enter)="submitted.emit()" />
+  <mat-error
+    *ngIf="control.touched && control.errors?.['required']"
+  >Withdrawal amount is required</mat-error>
+  <mat-error
+    *ngIf="control.touched && control.errors?.['invalidInteger']"
+  >Withdrawal amount must be a whole number greater than 0</mat-error>
+  <mat-error
+    *ngIf="control.touched && control.errors?.['max']"
+  >Withdrawal amount must be less than $2000.00</mat-error>
+</mat-form-field>

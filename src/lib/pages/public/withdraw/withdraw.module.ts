@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { WithdrawFormFieldComponent } from './components/withdraw-form-field/withdraw-form-field.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    WithdrawComponent
+    WithdrawComponent,
+    WithdrawFormFieldComponent
   ],
 	imports: [
 		CommonModule,
