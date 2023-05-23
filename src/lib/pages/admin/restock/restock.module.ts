@@ -8,6 +8,9 @@ import { PushModule } from '@rx-angular/template/push';
 import { RestockFormComponent } from './components/restock-form/restock-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { RestockFormFieldComponent } from './components/restock-form-field/restock-form-field.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const routes: Routes = [
   {
@@ -19,7 +22,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     RestockComponent,
-    RestockFormComponent
+    RestockFormComponent,
+    RestockFormFieldComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +32,9 @@ const routes: Routes = [
     MatCardModule,
     PushModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatTooltipModule
   ]
 })
 export class RestockModule { }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { displayFunds } from './overview.selectors';
+import { sortedDisplayFunds } from './overview.selectors';
 import { withdrawals } from '../../../core/funds/store/funds.selectors';
 
 @Component({
@@ -9,7 +9,7 @@ import { withdrawals } from '../../../core/funds/store/funds.selectors';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent {
-  availableFunds$ = this.store.select(displayFunds);
+  availableFunds$ = this.store.select(sortedDisplayFunds);
   transactions$ = this.store.select(withdrawals);
 
    constructor(private readonly store: Store) {}

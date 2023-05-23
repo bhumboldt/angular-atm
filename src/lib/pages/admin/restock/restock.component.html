@@ -1,7 +1,7 @@
-<button mat-flat-button class="mode-switch-button" color="accent" [routerLink]="['/', 'public']">Public ATM</button>
+<mat-icon class="mode-switch-button" color="accent" matTooltip="ATM Interface" [routerLink]="['/', 'public']">payments</mat-icon>
 
 <div class="flex justify-content-center align-items-center h-100">
-  <mat-card class="admin-container">
+  <mat-card>
     <mat-card-header>
       <mat-card-title>
         ATM Restock
@@ -15,10 +15,11 @@
       <app-restock-form
         class="mt-16"
         [form]="restockForm"
+        (submitted)="submit()"
       ></app-restock-form>
       <div class="flex justify-content-between">
         <button mat-flat-button [routerLink]="['..', 'overview']">Done</button>
-        <button mat-flat-button color="primary" (click)="submit()">Submit</button>
+        <button mat-flat-button [disabled]="restockForm.pristine || restockForm.invalid" color="primary" (click)="submit()">Submit</button>
       </div>
 
     </mat-card-content>

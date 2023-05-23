@@ -31,7 +31,7 @@ export class AuthEffects {
     tap(() => this.dialog.open(AdminPasswordComponent, {
       disableClose: true,
       width: '500px',
-      height: '250px',
+      height: '275px',
     }))
   ), { dispatch: false });
 

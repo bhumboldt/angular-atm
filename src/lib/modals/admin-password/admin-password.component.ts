@@ -16,6 +16,8 @@ export class AdminPasswordComponent {
   ) {}
 
   submit() {
-    this.store.dispatch(submitAdminPassword({ password: this.passwordControl.value as string }));
+    if (this.passwordControl.valid) {
+      this.store.dispatch(submitAdminPassword({ password: this.passwordControl.value as string }));
+    }
   }
 }

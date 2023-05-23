@@ -1,4 +1,4 @@
-<button mat-flat-button class="mode-switch-button" color="accent" (click)="showAdminPasswordModal()">Admin Interface</button>
+<mat-icon class="mode-switch-button" color="accent" matTooltip="Admin Interface" (click)="showAdminPasswordModal()">settings</mat-icon>
 
 <div class="flex align-items-center justify-content-center h-100">
   <mat-card>
@@ -15,7 +15,7 @@
       <div class="flex align-items-center mt-16 mb-16">
         <mat-form-field class="w-100">
           <mat-label>Withdrawal Amount</mat-label>
-          <input [formControl]="withdrawAmountControl" matInput type="number" />
+          <input [formControl]="withdrawAmountControl" matInput type="number" (keyup.enter)="withdraw()" />
           <mat-error
             *ngIf="withdrawAmountControl.touched && withdrawAmountControl.errors?.['required']"
           >Withdrawal amount is required</mat-error>

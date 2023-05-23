@@ -1,0 +1,7 @@
+<mat-form-field class="w-100">
+  <mat-label>${{ dollarAmount }} to add</mat-label>
+  <input matInput [formControl]="control" type="number" />
+  <mat-error
+    *ngIf="control?.touched && control.errors?.['invalidInteger']"
+  >${{ dollarAmount }} restock amount must be a whole number greater than 0</mat-error>
+</mat-form-field>

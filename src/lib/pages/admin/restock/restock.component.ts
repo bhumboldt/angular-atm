@@ -25,5 +25,6 @@ export class RestockComponent {
 
   submit() {
     this.store.dispatch(addStock({ stock: this.restockForm.value as Partial<Funds> }));
+    this.restockForm.reset();
   }
 }

@@ -16,7 +16,9 @@ export class WithdrawComponent {
   constructor(private readonly store: Store) {}
 
   withdraw() {
-    this.store.dispatch(withdrawAmount({ amount: this.withdrawAmountControl.value as unknown as number }));
+    if (this.withdrawAmountControl.valid) {
+      this.store.dispatch(withdrawAmount({ amount: this.withdrawAmountControl.value as unknown as number }));
+    }
   }
 
   showAdminPasswordModal() {
