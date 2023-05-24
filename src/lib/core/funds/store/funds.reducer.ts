@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { Withdrawal } from '../models/withdrawal.model';
 import { Funds } from '../models/funds.model';
-import { addStock, withdrawSucceeded } from './funds.actions';
+import { addStock, withdrawFailed, withdrawSucceeded } from './funds.actions';
 import { getFundsObjectMapping } from '../util/funds.util';
 
 export const FEATURE_NAME = 'core-funds';
@@ -26,7 +26,7 @@ export const initialState: FundsState = {
 export const setWithdrawSucceededState = (state: FundsState, { amount, fundsDispensed }: { amount: number, fundsDispensed: Partial<Funds> }): FundsState => ({
   ...state,
   withdrawals: [
-    { amountWithdrawn: amount, date: new Date() },
+    { message: `Dispensed $${amount}`, date: new Date() },
     ...state.withdrawals
   ],
   currentFunds: getFundsObjectMapping(fundsDispensed).reduce((prev, curr) => ({
@@ -43,9 +43,18 @@ export const setNewStock = (state: FundsState, { stock }: { stock: Partial<Funds
   }), state.currentFunds)
 });
 
+export const addFailedWithdrawalMessage = (state: FundsState): FundsState => ({
+  ...state,
+  withdrawals: [
+    { message: 'Insufficient Funds', date: new Date() },
+    ...state.withdrawals
+  ]
+});
+
 
 export const fundsReducer = createReducer(
   initialState,
   on(withdrawSucceeded, setWithdrawSucceededState),
-  on(addStock, setNewStock)
+  on(addStock, setNewStock),
+  on(withdrawFailed, addFailedWithdrawalMessage)
 );

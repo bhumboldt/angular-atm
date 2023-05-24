@@ -17,7 +17,7 @@ export class TransactionHistoryComponent implements OnChanges, AfterViewInit {
   @ViewChild(MatSort) sorter!: MatSort;
 
   dataSource: MatTableDataSource<Withdrawal> = new MatTableDataSource<Withdrawal>([]);
-  displayedColumns = ['date', 'amount'];
+  displayedColumns = ['date', 'message'];
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['transactions'] && changes['transactions'].currentValue) {

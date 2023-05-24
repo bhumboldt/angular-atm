@@ -11,7 +11,6 @@ import { Funds } from '../../../core/funds/models/funds.model';
   styleUrls: ['./restock.component.scss']
 })
 export class RestockComponent {
-
   restockForm = new FormGroup({
     100: new FormControl(undefined, [positiveIntegerValidator]),
     50: new FormControl(undefined, [positiveIntegerValidator]),

@@ -96,7 +96,7 @@ describe('Funds Reducer', () => {
           100: 10,
           50: 10,
         },
-        withdrawals: [{ amountWithdrawn: 100, date: new Date() }]
+        withdrawals: [{ message: `Dispensed $100`, date: new Date() }]
       };
 
       const fundsDispensed: Partial<Funds> = {
@@ -111,7 +111,7 @@ describe('Funds Reducer', () => {
         50: 9
       });
       expect(newState.withdrawals.length).toBe(2);
-      expect(newState.withdrawals[0].amountWithdrawn).toBe(50);
+      expect(newState.withdrawals[0].message).toBe(`Dispensed $50`);
     })
   });
 })

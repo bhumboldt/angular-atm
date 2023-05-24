@@ -1,4 +1,4 @@
 export interface Withdrawal {
   date: Date,
-  amountWithdrawn: number
+  message: string
 }
